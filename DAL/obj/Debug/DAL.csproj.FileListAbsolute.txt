@@ -1,0 +1,16 @@
+D:\Users\user1\Desktop\תכנות\פרוייקט גמר\ShoesProject\DAL\bin\Debug\DAL.dll.config
+D:\Users\user1\Desktop\תכנות\פרוייקט גמר\ShoesProject\DAL\bin\Debug\DAL.dll
+D:\Users\user1\Desktop\תכנות\פרוייקט גמר\ShoesProject\DAL\bin\Debug\DAL.pdb
+D:\Users\user1\Desktop\תכנות\פרוייקט גמר\ShoesProject\DAL\bin\Debug\EntityFramework.dll
+D:\Users\user1\Desktop\תכנות\פרוייקט גמר\ShoesProject\DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Users\user1\Desktop\תכנות\פרוייקט גמר\ShoesProject\DAL\bin\Debug\EntityFramework.xml
+D:\Users\user1\Desktop\תכנות\פרוייקט גמר\ShoesProject\DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Users\user1\Desktop\תכנות\פרוייקט גמר\ShoesProject\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\Users\user1\Desktop\תכנות\פרוייקט גמר\ShoesProject\DAL\obj\Debug\DAL.csproj.CopyComplete
+D:\Users\user1\Desktop\תכנות\פרוייקט גמר\ShoesProject\DAL\obj\Debug\DAL.dll
+D:\Users\user1\Desktop\תכנות\פרוייקט גמר\ShoesProject\DAL\obj\Debug\DAL.pdb
+D:\Users\user1\Desktop\תכנות\פרוייקט גמר\ShoesProject\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+D:\Users\user1\Desktop\תכנות\פרוייקט גמר\ShoesProject\DAL\bin\Debug\System.Web.Cors.dll
+D:\Users\user1\Desktop\תכנות\פרוייקט גמר\ShoesProject\DAL\bin\Debug\EntityFramework.SqlServerCompact.dll
+D:\Users\user1\Desktop\תכנות\פרוייקט גמר\ShoesProject\DAL\bin\Debug\System.Data.SqlServerCe.dll
+D:\Users\user1\Desktop\תכנות\פרוייקט גמר\ShoesProject\DAL\bin\Debug\EntityFramework.SqlServerCompact.xml

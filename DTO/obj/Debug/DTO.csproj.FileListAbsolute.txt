@@ -1,0 +1,6 @@
+D:\Users\user1\Desktop\תכנות\פרוייקט גמר\ShoesProject\DTO\bin\Debug\DTO.dll
+D:\Users\user1\Desktop\תכנות\פרוייקט גמר\ShoesProject\DTO\bin\Debug\DTO.pdb
+D:\Users\user1\Desktop\תכנות\פרוייקט גמר\ShoesProject\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+D:\Users\user1\Desktop\תכנות\פרוייקט גמר\ShoesProject\DTO\obj\Debug\DTO.dll
+D:\Users\user1\Desktop\תכנות\פרוייקט גמר\ShoesProject\DTO\obj\Debug\DTO.pdb
+D:\Users\user1\Desktop\תכנות\פרוייקט גמר\ShoesProject\DTO\obj\Debug\DTO.csprojAssemblyReference.cache

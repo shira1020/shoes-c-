@@ -1,0 +1,966 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB_shoesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Branches">
+          <Key>
+            <PropertyRef Name="id_branch" />
+          </Key>
+          <Property Name="id_branch" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="manager_id" Type="int" Nullable="false" />
+          <Property Name="city" Type="nchar" MaxLength="20" />
+          <Property Name="street" Type="nchar" MaxLength="20" />
+          <Property Name="house_number" Type="int" />
+          <Property Name="name_branch" Type="nchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Colors">
+          <Key>
+            <PropertyRef Name="id_color" />
+          </Key>
+          <Property Name="id_color" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="color" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="ColorsToShoes">
+          <Key>
+            <PropertyRef Name="id_shoe" />
+            <PropertyRef Name="id_color" />
+          </Key>
+          <Property Name="id_shoe" Type="int" Nullable="false" />
+          <Property Name="id_color" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomersToOrders">
+          <Key>
+            <PropertyRef Name="id_customer" />
+          </Key>
+          <Property Name="id_customer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_customer" Type="nvarchar" MaxLength="30" />
+          <Property Name="email" Type="nvarchar" MaxLength="40" />
+          <Property Name="phone" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="DescriptionForShoes">
+          <Key>
+            <PropertyRef Name="id_shoe" />
+            <PropertyRef Name="id_description" />
+          </Key>
+          <Property Name="id_shoe" Type="int" Nullable="false" />
+          <Property Name="id_description" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="employee_num" />
+          </Key>
+          <Property Name="employee_num" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_employee" Type="nvarchar" MaxLength="9" />
+          <Property Name="f_name" Type="nvarchar" MaxLength="20" />
+          <Property Name="l_name" Type="nvarchar" MaxLength="20" />
+          <Property Name="email" Type="nvarchar" MaxLength="30" />
+          <Property Name="password" Type="nvarchar" MaxLength="20" />
+          <Property Name="is_manager" Type="bit" />
+          <Property Name="requests_amount" Type="int" />
+        </EntityType>
+        <EntityType Name="MoadonCustomers">
+          <Key>
+            <PropertyRef Name="id_customer" />
+          </Key>
+          <Property Name="id_customer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="f_name" Type="nvarchar" MaxLength="20" />
+          <Property Name="l_name" Type="nvarchar" MaxLength="20" />
+          <Property Name="born_date" Type="date" />
+          <Property Name="phone" Type="nvarchar" MaxLength="10" />
+          <Property Name="email" Type="nvarchar" MaxLength="20" />
+          <Property Name="bonus_points" Type="int" />
+          <Property Name="password" Type="nchar" MaxLength="20" />
+          <Property Name="city" Type="nchar" MaxLength="20" />
+          <Property Name="street" Type="nchar" MaxLength="20" />
+          <Property Name="house_number" Type="int" />
+        </EntityType>
+        <EntityType Name="OrdersFromBranches">
+          <Key>
+            <PropertyRef Name="id_order" />
+          </Key>
+          <Property Name="id_order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="from_branch" Type="int" Nullable="false" />
+          <Property Name="to_branch" Type="int" Nullable="false" />
+          <Property Name="order_date" Type="date" Nullable="false" />
+          <Property Name="id_cust" Type="int" Nullable="false" />
+          <Property Name="id_shoe" Type="int" Nullable="false" />
+          <Property Name="size" Type="int" Nullable="false" />
+          <Property Name="color" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="status" Type="bit" />
+        </EntityType>
+        <EntityType Name="OrdersFromStock">
+          <Key>
+            <PropertyRef Name="id_order" />
+          </Key>
+          <Property Name="id_order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_shoe" Type="int" Nullable="false" />
+          <Property Name="color" Type="nvarchar" MaxLength="20" />
+          <Property Name="size" Type="int" />
+          <Property Name="time_order" Type="time" Precision="7" />
+          <Property Name="customer_name" Type="nvarchar" MaxLength="20" />
+          <Property Name="status" Type="int" />
+          <Property Name="id_branch" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sales">
+          <Key>
+            <PropertyRef Name="id_sale" />
+          </Key>
+          <Property Name="id_sale" Type="int" Nullable="false" />
+          <Property Name="description_sale" Type="nvarchar" MaxLength="30" />
+          <Property Name="precent_sale" Type="float" />
+          <Property Name="start_date" Type="date" />
+          <Property Name="end_date" Type="date" />
+        </EntityType>
+        <EntityType Name="SalesToStock">
+          <Key>
+            <PropertyRef Name="id_stock" />
+            <PropertyRef Name="id_sale" />
+          </Key>
+          <Property Name="id_stock" Type="int" Nullable="false" />
+          <Property Name="id_sale" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ShoeDescription">
+          <Key>
+            <PropertyRef Name="id_description" />
+          </Key>
+          <Property Name="id_description" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_description" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Shoes">
+          <Key>
+            <PropertyRef Name="id_shoe" />
+          </Key>
+          <Property Name="id_shoe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="model" Type="int" />
+          <Property Name="picture" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="kind" Type="int" />
+          <Property Name="price" Type="int" />
+          <Property Name="from_size" Type="int" />
+          <Property Name="to_size" Type="int" />
+        </EntityType>
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="id_stock" />
+          </Key>
+          <Property Name="id_stock" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_shoe" Type="int" Nullable="false" />
+          <Property Name="id_branch" Type="int" Nullable="false" />
+          <Property Name="size" Type="int" Nullable="false" />
+          <Property Name="color" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="amount" Type="int" Nullable="false" />
+          <Property Name="available_amount" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK__ColorsToS__id_co__17036CC0">
+          <End Role="Colors" Type="Self.Colors" Multiplicity="1" />
+          <End Role="ColorsToShoes" Type="Self.ColorsToShoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Colors">
+              <PropertyRef Name="id_color" />
+            </Principal>
+            <Dependent Role="ColorsToShoes">
+              <PropertyRef Name="id_color" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ColorsToS__id_sh__17F790F9">
+          <End Role="Shoes" Type="Self.Shoes" Multiplicity="1" />
+          <End Role="ColorsToShoes" Type="Self.ColorsToShoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shoes">
+              <PropertyRef Name="id_shoe" />
+            </Principal>
+            <Dependent Role="ColorsToShoes">
+              <PropertyRef Name="id_shoe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Descripti__id_de__18EBB532">
+          <End Role="ShoeDescription" Type="Self.ShoeDescription" Multiplicity="1" />
+          <End Role="DescriptionForShoes" Type="Self.DescriptionForShoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShoeDescription">
+              <PropertyRef Name="id_description" />
+            </Principal>
+            <Dependent Role="DescriptionForShoes">
+              <PropertyRef Name="id_description" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Descripti__id_sh__19DFD96B">
+          <End Role="Shoes" Type="Self.Shoes" Multiplicity="1" />
+          <End Role="DescriptionForShoes" Type="Self.DescriptionForShoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shoes">
+              <PropertyRef Name="id_shoe" />
+            </Principal>
+            <Dependent Role="DescriptionForShoes">
+              <PropertyRef Name="id_shoe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrdersFro__from___1AD3FDA4">
+          <End Role="Branches" Type="Self.Branches" Multiplicity="1" />
+          <End Role="OrdersFromBranches" Type="Self.OrdersFromBranches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branches">
+              <PropertyRef Name="id_branch" />
+            </Principal>
+            <Dependent Role="OrdersFromBranches">
+              <PropertyRef Name="from_branch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrdersFro__id_cu__1BC821DD">
+          <End Role="CustomersToOrders" Type="Self.CustomersToOrders" Multiplicity="1" />
+          <End Role="OrdersFromBranches" Type="Self.OrdersFromBranches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomersToOrders">
+              <PropertyRef Name="id_customer" />
+            </Principal>
+            <Dependent Role="OrdersFromBranches">
+              <PropertyRef Name="id_cust" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrdersFro__id_sh__1CBC4616">
+          <End Role="Shoes" Type="Self.Shoes" Multiplicity="1" />
+          <End Role="OrdersFromBranches" Type="Self.OrdersFromBranches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shoes">
+              <PropertyRef Name="id_shoe" />
+            </Principal>
+            <Dependent Role="OrdersFromBranches">
+              <PropertyRef Name="id_shoe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrdersFro__id_sh__29221CFB">
+          <End Role="Shoes" Type="Self.Shoes" Multiplicity="1" />
+          <End Role="OrdersFromStock" Type="Self.OrdersFromStock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shoes">
+              <PropertyRef Name="id_shoe" />
+            </Principal>
+            <Dependent Role="OrdersFromStock">
+              <PropertyRef Name="id_shoe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrdersFro__to_br__1DB06A4F">
+          <End Role="Branches" Type="Self.Branches" Multiplicity="1" />
+          <End Role="OrdersFromBranches" Type="Self.OrdersFromBranches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branches">
+              <PropertyRef Name="id_branch" />
+            </Principal>
+            <Dependent Role="OrdersFromBranches">
+              <PropertyRef Name="to_branch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SalesToSt__id_sa__14270015">
+          <End Role="Sales" Type="Self.Sales" Multiplicity="1" />
+          <End Role="SalesToStock" Type="Self.SalesToStock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sales">
+              <PropertyRef Name="id_sale" />
+            </Principal>
+            <Dependent Role="SalesToStock">
+              <PropertyRef Name="id_sale" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SalesToSt__id_st__151B244E">
+          <End Role="Stock" Type="Self.Stock" Multiplicity="1" />
+          <End Role="SalesToStock" Type="Self.SalesToStock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stock">
+              <PropertyRef Name="id_stock" />
+            </Principal>
+            <Dependent Role="SalesToStock">
+              <PropertyRef Name="id_stock" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Stock__id_branch__208CD6FA">
+          <End Role="Branches" Type="Self.Branches" Multiplicity="1" />
+          <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branches">
+              <PropertyRef Name="id_branch" />
+            </Principal>
+            <Dependent Role="Stock">
+              <PropertyRef Name="id_branch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Stock__id_shoe__2180FB33">
+          <End Role="Shoes" Type="Self.Shoes" Multiplicity="1" />
+          <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shoes">
+              <PropertyRef Name="id_shoe" />
+            </Principal>
+            <Dependent Role="Stock">
+              <PropertyRef Name="id_shoe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_branch">
+          <End Role="Branches" Type="Self.Branches" Multiplicity="1" />
+          <End Role="OrdersFromStock" Type="Self.OrdersFromStock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branches">
+              <PropertyRef Name="id_branch" />
+            </Principal>
+            <Dependent Role="OrdersFromStock">
+              <PropertyRef Name="id_branch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_manager_branch">
+          <End Role="Employees" Type="Self.Employees" Multiplicity="1" />
+          <End Role="Branches" Type="Self.Branches" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="employee_num" />
+            </Principal>
+            <Dependent Role="Branches">
+              <PropertyRef Name="manager_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_shoesModelStoreContainer">
+          <EntitySet Name="Branches" EntityType="Self.Branches" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Colors" EntityType="Self.Colors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ColorsToShoes" EntityType="Self.ColorsToShoes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomersToOrders" EntityType="Self.CustomersToOrders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DescriptionForShoes" EntityType="Self.DescriptionForShoes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MoadonCustomers" EntityType="Self.MoadonCustomers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrdersFromBranches" EntityType="Self.OrdersFromBranches" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrdersFromStock" EntityType="Self.OrdersFromStock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sales" EntityType="Self.Sales" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SalesToStock" EntityType="Self.SalesToStock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShoeDescription" EntityType="Self.ShoeDescription" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shoes" EntityType="Self.Shoes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stock" EntityType="Self.Stock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ColorsToS__id_co__17036CC0" Association="Self.FK__ColorsToS__id_co__17036CC0">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="ColorsToShoes" EntitySet="ColorsToShoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ColorsToS__id_sh__17F790F9" Association="Self.FK__ColorsToS__id_sh__17F790F9">
+            <End Role="Shoes" EntitySet="Shoes" />
+            <End Role="ColorsToShoes" EntitySet="ColorsToShoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Descripti__id_de__18EBB532" Association="Self.FK__Descripti__id_de__18EBB532">
+            <End Role="ShoeDescription" EntitySet="ShoeDescription" />
+            <End Role="DescriptionForShoes" EntitySet="DescriptionForShoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Descripti__id_sh__19DFD96B" Association="Self.FK__Descripti__id_sh__19DFD96B">
+            <End Role="Shoes" EntitySet="Shoes" />
+            <End Role="DescriptionForShoes" EntitySet="DescriptionForShoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrdersFro__from___1AD3FDA4" Association="Self.FK__OrdersFro__from___1AD3FDA4">
+            <End Role="Branches" EntitySet="Branches" />
+            <End Role="OrdersFromBranches" EntitySet="OrdersFromBranches" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrdersFro__id_cu__1BC821DD" Association="Self.FK__OrdersFro__id_cu__1BC821DD">
+            <End Role="CustomersToOrders" EntitySet="CustomersToOrders" />
+            <End Role="OrdersFromBranches" EntitySet="OrdersFromBranches" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrdersFro__id_sh__1CBC4616" Association="Self.FK__OrdersFro__id_sh__1CBC4616">
+            <End Role="Shoes" EntitySet="Shoes" />
+            <End Role="OrdersFromBranches" EntitySet="OrdersFromBranches" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrdersFro__id_sh__29221CFB" Association="Self.FK__OrdersFro__id_sh__29221CFB">
+            <End Role="Shoes" EntitySet="Shoes" />
+            <End Role="OrdersFromStock" EntitySet="OrdersFromStock" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrdersFro__to_br__1DB06A4F" Association="Self.FK__OrdersFro__to_br__1DB06A4F">
+            <End Role="Branches" EntitySet="Branches" />
+            <End Role="OrdersFromBranches" EntitySet="OrdersFromBranches" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SalesToSt__id_sa__14270015" Association="Self.FK__SalesToSt__id_sa__14270015">
+            <End Role="Sales" EntitySet="Sales" />
+            <End Role="SalesToStock" EntitySet="SalesToStock" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SalesToSt__id_st__151B244E" Association="Self.FK__SalesToSt__id_st__151B244E">
+            <End Role="Stock" EntitySet="Stock" />
+            <End Role="SalesToStock" EntitySet="SalesToStock" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Stock__id_branch__208CD6FA" Association="Self.FK__Stock__id_branch__208CD6FA">
+            <End Role="Branches" EntitySet="Branches" />
+            <End Role="Stock" EntitySet="Stock" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Stock__id_shoe__2180FB33" Association="Self.FK__Stock__id_shoe__2180FB33">
+            <End Role="Shoes" EntitySet="Shoes" />
+            <End Role="Stock" EntitySet="Stock" />
+          </AssociationSet>
+          <AssociationSet Name="fk_branch" Association="Self.fk_branch">
+            <End Role="Branches" EntitySet="Branches" />
+            <End Role="OrdersFromStock" EntitySet="OrdersFromStock" />
+          </AssociationSet>
+          <AssociationSet Name="fk_manager_branch" Association="Self.fk_manager_branch">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Branches" EntitySet="Branches" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_shoesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="id_branch" />
+          </Key>
+          <Property Name="id_branch" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="manager_id" Type="Int32" Nullable="false" />
+          <Property Name="city" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="street" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="house_number" Type="Int32" />
+          <NavigationProperty Name="OrdersFromBranches" Relationship="Self.FK__OrdersFro__from___1AD3FDA4" FromRole="Branches" ToRole="OrdersFromBranches" />
+          <NavigationProperty Name="OrdersFromBranches1" Relationship="Self.FK__OrdersFro__to_br__1DB06A4F" FromRole="Branches" ToRole="OrdersFromBranches" />
+          <NavigationProperty Name="Stocks" Relationship="Self.FK__Stock__id_branch__208CD6FA" FromRole="Branches" ToRole="Stock" />
+          <NavigationProperty Name="OrdersFromStocks" Relationship="Self.fk_branch" FromRole="Branches" ToRole="OrdersFromStock" />
+          <NavigationProperty Name="Employee" Relationship="Self.fk_manager_branch" FromRole="Branches" ToRole="Employees" />
+          <Property Name="name_branch" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="id_color" />
+          </Key>
+          <Property Name="id_color" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="color1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Shoes" Relationship="Self.ColorsToShoes" FromRole="Colors" ToRole="Shoes" />
+        </EntityType>
+        <EntityType Name="CustomersToOrder">
+          <Key>
+            <PropertyRef Name="id_customer" />
+          </Key>
+          <Property Name="id_customer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_customer" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OrdersFromBranches" Relationship="Self.FK__OrdersFro__id_cu__1BC821DD" FromRole="CustomersToOrders" ToRole="OrdersFromBranches" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="employee_num" />
+          </Key>
+          <Property Name="employee_num" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_employee" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="f_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="l_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="is_manager" Type="Boolean" />
+          <Property Name="requests_amount" Type="Int32" />
+          <NavigationProperty Name="Branches" Relationship="Self.fk_manager_branch" FromRole="Employees" ToRole="Branches" />
+        </EntityType>
+        <EntityType Name="MoadonCustomer">
+          <Key>
+            <PropertyRef Name="id_customer" />
+          </Key>
+          <Property Name="id_customer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="f_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="l_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="born_date" Type="DateTime" Precision="0" />
+          <Property Name="phone" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="bonus_points" Type="Int32" />
+          <Property Name="password" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="street" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="house_number" Type="Int32" />
+        </EntityType>
+        <EntityType Name="OrdersFromBranch">
+          <Key>
+            <PropertyRef Name="id_order" />
+          </Key>
+          <Property Name="id_order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="from_branch" Type="Int32" Nullable="false" />
+          <Property Name="to_branch" Type="Int32" Nullable="false" />
+          <Property Name="order_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="id_cust" Type="Int32" Nullable="false" />
+          <Property Name="id_shoe" Type="Int32" Nullable="false" />
+          <Property Name="size" Type="Int32" Nullable="false" />
+          <Property Name="color" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Branch" Relationship="Self.FK__OrdersFro__from___1AD3FDA4" FromRole="OrdersFromBranches" ToRole="Branches" />
+          <NavigationProperty Name="Branch1" Relationship="Self.FK__OrdersFro__to_br__1DB06A4F" FromRole="OrdersFromBranches" ToRole="Branches" />
+          <NavigationProperty Name="CustomersToOrder" Relationship="Self.FK__OrdersFro__id_cu__1BC821DD" FromRole="OrdersFromBranches" ToRole="CustomersToOrders" />
+          <NavigationProperty Name="Sho" Relationship="Self.FK__OrdersFro__id_sh__1CBC4616" FromRole="OrdersFromBranches" ToRole="Shoes" />
+          <Property Name="status" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="OrdersFromStock">
+          <Key>
+            <PropertyRef Name="id_order" />
+          </Key>
+          <Property Name="id_order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_shoe" Type="Int32" Nullable="false" />
+          <Property Name="color" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="size" Type="Int32" />
+          <Property Name="time_order" Type="Time" Precision="7" />
+          <Property Name="customer_name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="Int32" />
+          <Property Name="id_branch" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Branch" Relationship="Self.fk_branch" FromRole="OrdersFromStock" ToRole="Branches" />
+          <NavigationProperty Name="Sho" Relationship="Self.FK__OrdersFro__id_sh__1F98B2C1" FromRole="OrdersFromStock" ToRole="Shoes" />
+        </EntityType>
+        <EntityType Name="Sale">
+          <Key>
+            <PropertyRef Name="id_sale" />
+          </Key>
+          <Property Name="id_sale" Type="Int32" Nullable="false" />
+          <Property Name="description_sale" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="precent_sale" Type="Double" />
+          <Property Name="start_date" Type="DateTime" Precision="0" />
+          <Property Name="end_date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Stocks" Relationship="Self.SalesToStock" FromRole="Sales" ToRole="Stock" />
+        </EntityType>
+        <EntityType Name="ShoeDescription">
+          <Key>
+            <PropertyRef Name="id_description" />
+          </Key>
+          <Property Name="id_description" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_description" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Shoes" Relationship="Self.DescriptionForShoes" FromRole="ShoeDescription" ToRole="Shoes" />
+        </EntityType>
+        <EntityType Name="Sho">
+          <Key>
+            <PropertyRef Name="id_shoe" />
+          </Key>
+          <Property Name="id_shoe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="model" Type="Int32" />
+          <Property Name="picture" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="kind" Type="Int32" />
+          <Property Name="price" Type="Int32" />
+          <NavigationProperty Name="OrdersFromBranches" Relationship="Self.FK__OrdersFro__id_sh__1CBC4616" FromRole="Shoes" ToRole="OrdersFromBranches" />
+          <NavigationProperty Name="OrdersFromStocks" Relationship="Self.FK__OrdersFro__id_sh__1F98B2C1" FromRole="Shoes" ToRole="OrdersFromStock" />
+          <NavigationProperty Name="Stocks" Relationship="Self.FK__Stock__id_shoe__2180FB33" FromRole="Shoes" ToRole="Stock" />
+          <NavigationProperty Name="Colors" Relationship="Self.ColorsToShoes" FromRole="Shoes" ToRole="Colors" />
+          <NavigationProperty Name="ShoeDescriptions" Relationship="Self.DescriptionForShoes" FromRole="Shoes" ToRole="ShoeDescription" />
+          <Property Name="from_size" Type="Int32" />
+          <Property Name="to_size" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="id_stock" />
+          </Key>
+          <Property Name="id_stock" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_shoe" Type="Int32" Nullable="false" />
+          <Property Name="id_branch" Type="Int32" Nullable="false" />
+          <Property Name="size" Type="Int32" Nullable="false" />
+          <Property Name="color" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="amount" Type="Int32" Nullable="false" />
+          <Property Name="available_amount" Type="Int32" />
+          <NavigationProperty Name="Branch" Relationship="Self.FK__Stock__id_branch__208CD6FA" FromRole="Stock" ToRole="Branches" />
+          <NavigationProperty Name="Sho" Relationship="Self.FK__Stock__id_shoe__2180FB33" FromRole="Stock" ToRole="Shoes" />
+          <NavigationProperty Name="Sales" Relationship="Self.SalesToStock" FromRole="Stock" ToRole="Sales" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK__OrdersFro__from___1AD3FDA4">
+          <End Role="Branches" Type="Self.Branch" Multiplicity="1" />
+          <End Role="OrdersFromBranches" Type="Self.OrdersFromBranch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branches">
+              <PropertyRef Name="id_branch" />
+            </Principal>
+            <Dependent Role="OrdersFromBranches">
+              <PropertyRef Name="from_branch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrdersFro__to_br__1DB06A4F">
+          <End Role="Branches" Type="Self.Branch" Multiplicity="1" />
+          <End Role="OrdersFromBranches" Type="Self.OrdersFromBranch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branches">
+              <PropertyRef Name="id_branch" />
+            </Principal>
+            <Dependent Role="OrdersFromBranches">
+              <PropertyRef Name="to_branch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Stock__id_branch__208CD6FA">
+          <End Role="Branches" Type="Self.Branch" Multiplicity="1" />
+          <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branches">
+              <PropertyRef Name="id_branch" />
+            </Principal>
+            <Dependent Role="Stock">
+              <PropertyRef Name="id_branch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_branch">
+          <End Role="Branches" Type="Self.Branch" Multiplicity="1" />
+          <End Role="OrdersFromStock" Type="Self.OrdersFromStock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branches">
+              <PropertyRef Name="id_branch" />
+            </Principal>
+            <Dependent Role="OrdersFromStock">
+              <PropertyRef Name="id_branch" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_manager_branch">
+          <End Role="Employees" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Branches" Type="Self.Branch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employees">
+              <PropertyRef Name="employee_num" />
+            </Principal>
+            <Dependent Role="Branches">
+              <PropertyRef Name="manager_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrdersFro__id_cu__1BC821DD">
+          <End Role="CustomersToOrders" Type="Self.CustomersToOrder" Multiplicity="1" />
+          <End Role="OrdersFromBranches" Type="Self.OrdersFromBranch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomersToOrders">
+              <PropertyRef Name="id_customer" />
+            </Principal>
+            <Dependent Role="OrdersFromBranches">
+              <PropertyRef Name="id_cust" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrdersFro__id_sh__1CBC4616">
+          <End Role="Shoes" Type="Self.Sho" Multiplicity="1" />
+          <End Role="OrdersFromBranches" Type="Self.OrdersFromBranch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shoes">
+              <PropertyRef Name="id_shoe" />
+            </Principal>
+            <Dependent Role="OrdersFromBranches">
+              <PropertyRef Name="id_shoe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrdersFro__id_sh__1F98B2C1">
+          <End Role="Shoes" Type="Self.Sho" Multiplicity="1" />
+          <End Role="OrdersFromStock" Type="Self.OrdersFromStock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shoes">
+              <PropertyRef Name="id_shoe" />
+            </Principal>
+            <Dependent Role="OrdersFromStock">
+              <PropertyRef Name="id_shoe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Stock__id_shoe__2180FB33">
+          <End Role="Shoes" Type="Self.Sho" Multiplicity="1" />
+          <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shoes">
+              <PropertyRef Name="id_shoe" />
+            </Principal>
+            <Dependent Role="Stock">
+              <PropertyRef Name="id_shoe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ColorsToShoes">
+          <End Role="Colors" Type="Self.Color" Multiplicity="*" />
+          <End Role="Shoes" Type="Self.Sho" Multiplicity="*" />
+        </Association>
+        <Association Name="DescriptionForShoes">
+          <End Role="ShoeDescription" Type="Self.ShoeDescription" Multiplicity="*" />
+          <End Role="Shoes" Type="Self.Sho" Multiplicity="*" />
+        </Association>
+        <Association Name="SalesToStock">
+          <End Role="Sales" Type="Self.Sale" Multiplicity="*" />
+          <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="DB_shoesEntities5" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Branches" EntityType="Self.Branch" />
+          <EntitySet Name="Colors" EntityType="Self.Color" />
+          <EntitySet Name="CustomersToOrders" EntityType="Self.CustomersToOrder" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="MoadonCustomers" EntityType="Self.MoadonCustomer" />
+          <EntitySet Name="OrdersFromBranches" EntityType="Self.OrdersFromBranch" />
+          <EntitySet Name="OrdersFromStocks" EntityType="Self.OrdersFromStock" />
+          <EntitySet Name="Sales" EntityType="Self.Sale" />
+          <EntitySet Name="ShoeDescriptions" EntityType="Self.ShoeDescription" />
+          <EntitySet Name="Shoes" EntityType="Self.Sho" />
+          <EntitySet Name="Stocks" EntityType="Self.Stock" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK__OrdersFro__from___1AD3FDA4" Association="Self.FK__OrdersFro__from___1AD3FDA4">
+            <End Role="Branches" EntitySet="Branches" />
+            <End Role="OrdersFromBranches" EntitySet="OrdersFromBranches" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrdersFro__to_br__1DB06A4F" Association="Self.FK__OrdersFro__to_br__1DB06A4F">
+            <End Role="Branches" EntitySet="Branches" />
+            <End Role="OrdersFromBranches" EntitySet="OrdersFromBranches" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Stock__id_branch__208CD6FA" Association="Self.FK__Stock__id_branch__208CD6FA">
+            <End Role="Branches" EntitySet="Branches" />
+            <End Role="Stock" EntitySet="Stocks" />
+          </AssociationSet>
+          <AssociationSet Name="fk_branch" Association="Self.fk_branch">
+            <End Role="Branches" EntitySet="Branches" />
+            <End Role="OrdersFromStock" EntitySet="OrdersFromStocks" />
+          </AssociationSet>
+          <AssociationSet Name="fk_manager_branch" Association="Self.fk_manager_branch">
+            <End Role="Employees" EntitySet="Employees" />
+            <End Role="Branches" EntitySet="Branches" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrdersFro__id_cu__1BC821DD" Association="Self.FK__OrdersFro__id_cu__1BC821DD">
+            <End Role="CustomersToOrders" EntitySet="CustomersToOrders" />
+            <End Role="OrdersFromBranches" EntitySet="OrdersFromBranches" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrdersFro__id_sh__1CBC4616" Association="Self.FK__OrdersFro__id_sh__1CBC4616">
+            <End Role="Shoes" EntitySet="Shoes" />
+            <End Role="OrdersFromBranches" EntitySet="OrdersFromBranches" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrdersFro__id_sh__1F98B2C1" Association="Self.FK__OrdersFro__id_sh__1F98B2C1">
+            <End Role="Shoes" EntitySet="Shoes" />
+            <End Role="OrdersFromStock" EntitySet="OrdersFromStocks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Stock__id_shoe__2180FB33" Association="Self.FK__Stock__id_shoe__2180FB33">
+            <End Role="Shoes" EntitySet="Shoes" />
+            <End Role="Stock" EntitySet="Stocks" />
+          </AssociationSet>
+          <AssociationSet Name="ColorsToShoes" Association="Self.ColorsToShoes">
+            <End Role="Colors" EntitySet="Colors" />
+            <End Role="Shoes" EntitySet="Shoes" />
+          </AssociationSet>
+          <AssociationSet Name="DescriptionForShoes" Association="Self.DescriptionForShoes">
+            <End Role="ShoeDescription" EntitySet="ShoeDescriptions" />
+            <End Role="Shoes" EntitySet="Shoes" />
+          </AssociationSet>
+          <AssociationSet Name="SalesToStock" Association="Self.SalesToStock">
+            <End Role="Sales" EntitySet="Sales" />
+            <End Role="Stock" EntitySet="Stocks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_shoesModelStoreContainer" CdmEntityContainer="DB_shoesEntities5">
+          <EntitySetMapping Name="Branches">
+            <EntityTypeMapping TypeName="DB_shoesModel.Branch">
+              <MappingFragment StoreEntitySet="Branches">
+                <ScalarProperty Name="name_branch" ColumnName="name_branch" />
+                <ScalarProperty Name="id_branch" ColumnName="id_branch" />
+                <ScalarProperty Name="manager_id" ColumnName="manager_id" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="house_number" ColumnName="house_number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Colors">
+            <EntityTypeMapping TypeName="DB_shoesModel.Color">
+              <MappingFragment StoreEntitySet="Colors">
+                <ScalarProperty Name="id_color" ColumnName="id_color" />
+                <ScalarProperty Name="color1" ColumnName="color" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomersToOrders">
+            <EntityTypeMapping TypeName="DB_shoesModel.CustomersToOrder">
+              <MappingFragment StoreEntitySet="CustomersToOrders">
+                <ScalarProperty Name="id_customer" ColumnName="id_customer" />
+                <ScalarProperty Name="name_customer" ColumnName="name_customer" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="DB_shoesModel.Employee">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="employee_num" ColumnName="employee_num" />
+                <ScalarProperty Name="id_employee" ColumnName="id_employee" />
+                <ScalarProperty Name="f_name" ColumnName="f_name" />
+                <ScalarProperty Name="l_name" ColumnName="l_name" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="is_manager" ColumnName="is_manager" />
+                <ScalarProperty Name="requests_amount" ColumnName="requests_amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MoadonCustomers">
+            <EntityTypeMapping TypeName="DB_shoesModel.MoadonCustomer">
+              <MappingFragment StoreEntitySet="MoadonCustomers">
+                <ScalarProperty Name="id_customer" ColumnName="id_customer" />
+                <ScalarProperty Name="f_name" ColumnName="f_name" />
+                <ScalarProperty Name="l_name" ColumnName="l_name" />
+                <ScalarProperty Name="born_date" ColumnName="born_date" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="bonus_points" ColumnName="bonus_points" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="street" ColumnName="street" />
+                <ScalarProperty Name="house_number" ColumnName="house_number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrdersFromBranches">
+            <EntityTypeMapping TypeName="DB_shoesModel.OrdersFromBranch">
+              <MappingFragment StoreEntitySet="OrdersFromBranches">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="id_order" ColumnName="id_order" />
+                <ScalarProperty Name="from_branch" ColumnName="from_branch" />
+                <ScalarProperty Name="to_branch" ColumnName="to_branch" />
+                <ScalarProperty Name="order_date" ColumnName="order_date" />
+                <ScalarProperty Name="id_cust" ColumnName="id_cust" />
+                <ScalarProperty Name="id_shoe" ColumnName="id_shoe" />
+                <ScalarProperty Name="size" ColumnName="size" />
+                <ScalarProperty Name="color" ColumnName="color" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrdersFromStocks">
+            <EntityTypeMapping TypeName="DB_shoesModel.OrdersFromStock">
+              <MappingFragment StoreEntitySet="OrdersFromStock">
+                <ScalarProperty Name="id_order" ColumnName="id_order" />
+                <ScalarProperty Name="id_shoe" ColumnName="id_shoe" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="size" ColumnName="size" />
+                <ScalarProperty Name="time_order" ColumnName="time_order" />
+                <ScalarProperty Name="customer_name" ColumnName="customer_name" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="id_branch" ColumnName="id_branch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sales">
+            <EntityTypeMapping TypeName="DB_shoesModel.Sale">
+              <MappingFragment StoreEntitySet="Sales">
+                <ScalarProperty Name="id_sale" ColumnName="id_sale" />
+                <ScalarProperty Name="description_sale" ColumnName="description_sale" />
+                <ScalarProperty Name="precent_sale" ColumnName="precent_sale" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShoeDescriptions">
+            <EntityTypeMapping TypeName="DB_shoesModel.ShoeDescription">
+              <MappingFragment StoreEntitySet="ShoeDescription">
+                <ScalarProperty Name="id_description" ColumnName="id_description" />
+                <ScalarProperty Name="name_description" ColumnName="name_description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shoes">
+            <EntityTypeMapping TypeName="DB_shoesModel.Sho">
+              <MappingFragment StoreEntitySet="Shoes">
+                <ScalarProperty Name="to_size" ColumnName="to_size" />
+                <ScalarProperty Name="from_size" ColumnName="from_size" />
+                <ScalarProperty Name="id_shoe" ColumnName="id_shoe" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="kind" ColumnName="kind" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stocks">
+            <EntityTypeMapping TypeName="DB_shoesModel.Stock">
+              <MappingFragment StoreEntitySet="Stock">
+                <ScalarProperty Name="id_stock" ColumnName="id_stock" />
+                <ScalarProperty Name="id_shoe" ColumnName="id_shoe" />
+                <ScalarProperty Name="id_branch" ColumnName="id_branch" />
+                <ScalarProperty Name="size" ColumnName="size" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="available_amount" ColumnName="available_amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DB_shoesModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ColorsToShoes" TypeName="DB_shoesModel.ColorsToShoes" StoreEntitySet="ColorsToShoes">
+            <EndProperty Name="Colors">
+              <ScalarProperty Name="id_color" ColumnName="id_color" />
+            </EndProperty>
+            <EndProperty Name="Shoes">
+              <ScalarProperty Name="id_shoe" ColumnName="id_shoe" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="DescriptionForShoes" TypeName="DB_shoesModel.DescriptionForShoes" StoreEntitySet="DescriptionForShoes">
+            <EndProperty Name="ShoeDescription">
+              <ScalarProperty Name="id_description" ColumnName="id_description" />
+            </EndProperty>
+            <EndProperty Name="Shoes">
+              <ScalarProperty Name="id_shoe" ColumnName="id_shoe" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="SalesToStock" TypeName="DB_shoesModel.SalesToStock" StoreEntitySet="SalesToStock">
+            <EndProperty Name="Sales">
+              <ScalarProperty Name="id_sale" ColumnName="id_sale" />
+            </EndProperty>
+            <EndProperty Name="Stock">
+              <ScalarProperty Name="id_stock" ColumnName="id_stock" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

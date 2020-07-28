@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_shoesModelStoreContainer" CdmEntityContainer="DB_shoesEntities5">
+    <EntitySetMapping Name="Branches">
+      <EntityTypeMapping TypeName="DB_shoesModel.Branch">
+        <MappingFragment StoreEntitySet="Branches">
+          <ScalarProperty Name="name_branch" ColumnName="name_branch" />
+          <ScalarProperty Name="id_branch" ColumnName="id_branch" />
+          <ScalarProperty Name="manager_id" ColumnName="manager_id" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="street" ColumnName="street" />
+          <ScalarProperty Name="house_number" ColumnName="house_number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Colors">
+      <EntityTypeMapping TypeName="DB_shoesModel.Color">
+        <MappingFragment StoreEntitySet="Colors">
+          <ScalarProperty Name="id_color" ColumnName="id_color" />
+          <ScalarProperty Name="color1" ColumnName="color" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomersToOrders">
+      <EntityTypeMapping TypeName="DB_shoesModel.CustomersToOrder">
+        <MappingFragment StoreEntitySet="CustomersToOrders">
+          <ScalarProperty Name="id_customer" ColumnName="id_customer" />
+          <ScalarProperty Name="name_customer" ColumnName="name_customer" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="DB_shoesModel.Employee">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="employee_num" ColumnName="employee_num" />
+          <ScalarProperty Name="id_employee" ColumnName="id_employee" />
+          <ScalarProperty Name="f_name" ColumnName="f_name" />
+          <ScalarProperty Name="l_name" ColumnName="l_name" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="is_manager" ColumnName="is_manager" />
+          <ScalarProperty Name="requests_amount" ColumnName="requests_amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MoadonCustomers">
+      <EntityTypeMapping TypeName="DB_shoesModel.MoadonCustomer">
+        <MappingFragment StoreEntitySet="MoadonCustomers">
+          <ScalarProperty Name="id_customer" ColumnName="id_customer" />
+          <ScalarProperty Name="f_name" ColumnName="f_name" />
+          <ScalarProperty Name="l_name" ColumnName="l_name" />
+          <ScalarProperty Name="born_date" ColumnName="born_date" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="bonus_points" ColumnName="bonus_points" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="street" ColumnName="street" />
+          <ScalarProperty Name="house_number" ColumnName="house_number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrdersFromBranches">
+      <EntityTypeMapping TypeName="DB_shoesModel.OrdersFromBranch">
+        <MappingFragment StoreEntitySet="OrdersFromBranches">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="id_order" ColumnName="id_order" />
+          <ScalarProperty Name="from_branch" ColumnName="from_branch" />
+          <ScalarProperty Name="to_branch" ColumnName="to_branch" />
+          <ScalarProperty Name="order_date" ColumnName="order_date" />
+          <ScalarProperty Name="id_cust" ColumnName="id_cust" />
+          <ScalarProperty Name="id_shoe" ColumnName="id_shoe" />
+          <ScalarProperty Name="size" ColumnName="size" />
+          <ScalarProperty Name="color" ColumnName="color" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrdersFromStocks">
+      <EntityTypeMapping TypeName="DB_shoesModel.OrdersFromStock">
+        <MappingFragment StoreEntitySet="OrdersFromStock">
+          <ScalarProperty Name="id_order" ColumnName="id_order" />
+          <ScalarProperty Name="id_shoe" ColumnName="id_shoe" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="size" ColumnName="size" />
+          <ScalarProperty Name="time_order" ColumnName="time_order" />
+          <ScalarProperty Name="customer_name" ColumnName="customer_name" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="id_branch" ColumnName="id_branch" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sales">
+      <EntityTypeMapping TypeName="DB_shoesModel.Sale">
+        <MappingFragment StoreEntitySet="Sales">
+          <ScalarProperty Name="id_sale" ColumnName="id_sale" />
+          <ScalarProperty Name="description_sale" ColumnName="description_sale" />
+          <ScalarProperty Name="precent_sale" ColumnName="precent_sale" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShoeDescriptions">
+      <EntityTypeMapping TypeName="DB_shoesModel.ShoeDescription">
+        <MappingFragment StoreEntitySet="ShoeDescription">
+          <ScalarProperty Name="id_description" ColumnName="id_description" />
+          <ScalarProperty Name="name_description" ColumnName="name_description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Shoes">
+      <EntityTypeMapping TypeName="DB_shoesModel.Sho">
+        <MappingFragment StoreEntitySet="Shoes">
+          <ScalarProperty Name="to_size" ColumnName="to_size" />
+          <ScalarProperty Name="from_size" ColumnName="from_size" />
+          <ScalarProperty Name="id_shoe" ColumnName="id_shoe" />
+          <ScalarProperty Name="model" ColumnName="model" />
+          <ScalarProperty Name="picture" ColumnName="picture" />
+          <ScalarProperty Name="kind" ColumnName="kind" />
+          <ScalarProperty Name="price" ColumnName="price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stocks">
+      <EntityTypeMapping TypeName="DB_shoesModel.Stock">
+        <MappingFragment StoreEntitySet="Stock">
+          <ScalarProperty Name="id_stock" ColumnName="id_stock" />
+          <ScalarProperty Name="id_shoe" ColumnName="id_shoe" />
+          <ScalarProperty Name="id_branch" ColumnName="id_branch" />
+          <ScalarProperty Name="size" ColumnName="size" />
+          <ScalarProperty Name="color" ColumnName="color" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="available_amount" ColumnName="available_amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="DB_shoesModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ColorsToShoes" TypeName="DB_shoesModel.ColorsToShoes" StoreEntitySet="ColorsToShoes">
+      <EndProperty Name="Colors">
+        <ScalarProperty Name="id_color" ColumnName="id_color" />
+      </EndProperty>
+      <EndProperty Name="Shoes">
+        <ScalarProperty Name="id_shoe" ColumnName="id_shoe" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="DescriptionForShoes" TypeName="DB_shoesModel.DescriptionForShoes" StoreEntitySet="DescriptionForShoes">
+      <EndProperty Name="ShoeDescription">
+        <ScalarProperty Name="id_description" ColumnName="id_description" />
+      </EndProperty>
+      <EndProperty Name="Shoes">
+        <ScalarProperty Name="id_shoe" ColumnName="id_shoe" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SalesToStock" TypeName="DB_shoesModel.SalesToStock" StoreEntitySet="SalesToStock">
+      <EndProperty Name="Sales">
+        <ScalarProperty Name="id_sale" ColumnName="id_sale" />
+      </EndProperty>
+      <EndProperty Name="Stock">
+        <ScalarProperty Name="id_stock" ColumnName="id_stock" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
