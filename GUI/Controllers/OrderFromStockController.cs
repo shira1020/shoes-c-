@@ -30,11 +30,11 @@ namespace GUI.Controllers
         {
         }
 
-        [Route("AddOrderFromStock/{id_shoe}/{id_branch}/{size}/{color}/{name}")]
+        [Route("AddOrderToStock/{id_shoe}/{id_branch}/{size}/{color}/{name}")]
         [HttpPost]
-        public bool AddOrderFromStock([FromUri] int id_shoe, int id_branch, int size, string color, string name,[FromBody] int tryy)
+        public int AddOrderToStock([FromUri] int id_shoe, int id_branch, int size, string color, string name,[FromBody] int tryy)
         {
-          return  BL.OrdersFromStockBL.AddOrderFromStock(id_shoe, id_branch, size,color,name);
+          return  BL.OrdersFromStockBL.AddOrderToStock(id_shoe, id_branch, size,color,name);
         }
 
         [Route("GetOrderFromStock/{id_branch}")]

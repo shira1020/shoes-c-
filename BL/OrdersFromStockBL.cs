@@ -9,7 +9,7 @@ namespace BL
 {
     public class OrdersFromStockBL
     {
-        public static bool AddOrderFromStock(int id_shoe, int id_branch, int size, string color, string name)
+        public static int AddOrderToStock(int id_shoe, int id_branch, int size, string color, string name)
         {
             using (DB_shoesEntities5 db = new DB_shoesEntities5())
             {
@@ -31,11 +31,11 @@ namespace BL
                 try
                 {
                     db.SaveChanges();
-                    return true;
+                    return stock.id_stock;
                 }
                 catch (Exception e)
                 {
-                    return false;
+                    return 0;
                 }
 
             }

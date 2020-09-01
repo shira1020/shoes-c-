@@ -4,3 +4,9 @@ D:\Users\user1\Desktop\תכנות\פרוייקט גמר\ShoesProject\DTO\obj\Deb
 D:\Users\user1\Desktop\תכנות\פרוייקט גמר\ShoesProject\DTO\obj\Debug\DTO.dll
 D:\Users\user1\Desktop\תכנות\פרוייקט גמר\ShoesProject\DTO\obj\Debug\DTO.pdb
 D:\Users\user1\Desktop\תכנות\פרוייקט גמר\ShoesProject\DTO\obj\Debug\DTO.csprojAssemblyReference.cache
+C:\repoes\shoes-c-\DTO\bin\Debug\DTO.dll
+C:\repoes\shoes-c-\DTO\bin\Debug\DTO.pdb
+C:\repoes\shoes-c-\DTO\obj\Debug\DTO.csprojAssemblyReference.cache
+C:\repoes\shoes-c-\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+C:\repoes\shoes-c-\DTO\obj\Debug\DTO.dll
+C:\repoes\shoes-c-\DTO\obj\Debug\DTO.pdb
