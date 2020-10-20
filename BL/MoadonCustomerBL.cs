@@ -12,20 +12,7 @@ namespace BL
 {
     public class MoadonCustomerBL
     {
-        public static void sendSms()
-        {
-            string s = "COM1";
-         SMSCOMMS   SMSEngine = new SMSCOMMS(ref s);
-            SMSEngine.Open();
-            SMSEngine.SendSMS("972586136628", "THIS IS YOUR MESSAGE");
-            SMSEngine.Close();
-            //    SMSCOMMS SMSEngine;
-            //    SMSEngine = new SMSCOMMS("COM1");
-            //    InitializeComponent();
-            //    SMSEngine.Open();
-            //    SMSEngine.SendSMS("972586136628", "THIS IS YOUR MESSAGE");
-            //    SMSEngine.Close();
-        }
+     
         public static bool AddMoadonCustomer(MoadonCustomerDTO customer)
         {
             using (DB_shoesEntities5 db = new DB_shoesEntities5())

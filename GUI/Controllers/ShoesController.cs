@@ -5,6 +5,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using BL;
+using DTO;
+
 namespace GUI.Controllers
 {
     [System.Web.Http.Cors.EnableCors(origins:"*",headers:"*",methods:"*")]
@@ -32,9 +34,20 @@ namespace GUI.Controllers
         {
             return BL.ShoesBL.GetDetailsById(id);
         }
+		[Route("AddMoadonCustomer")]
+		[HttpPost]
+		public bool AddMoadonCustomer([FromBody] MoadonCustomerDTO cust)
+		{
+			return BL.MoadonCustomerBL.AddMoadonCustomer(cust);
+		}
+		[Route("OnUpload")]
+		[HttpPost]
+		public bool onUpload([FromBody]ShoeDTO shoe)
+		{
+			return BL.ShoesBL.OnUpload(shoe);
+		}
 
-
-        [Route("GetColorsById/{id}")]
+		[Route("GetColorsById/{id}")]
         [HttpGet]
         public string[] GetColorsById([FromUri] int id)
         { 

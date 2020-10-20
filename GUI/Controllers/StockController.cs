@@ -39,9 +39,9 @@ namespace GUI.Controllers
             bool a= BL.StockBL.IsFoundInStock(id_shoe, id_branch, size ,color);
             return a;
         }
-
-        // POST: api/Stock
-        public void Post([FromBody]string value)
+		
+		// POST: api/Stock
+		public void Post([FromBody]string value)
         {
         }
 

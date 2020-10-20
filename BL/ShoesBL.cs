@@ -19,8 +19,23 @@ namespace BL
 
             }
         }
+		public static bool OnUpload(ShoeDTO shoe)
+		{
+			using (DB_shoesEntities5 db = new DB_shoesEntities5())
+			{
+				try
+				{
+					db.Shoes.Add(converters.ShoeConverter.ShoeToDAL(shoe));
 
-        public static List<string> GetColorsById(int id)
+					db.SaveChanges();
+					return true;
+				}
+				catch (Exception e)
+				{ return false; }
+			}
+		}
+
+		public static List<string> GetColorsById(int id)
         {
             using (DB_shoesEntities5 db = new DB_shoesEntities5())
             {
