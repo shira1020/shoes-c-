@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using BL;
+using DAL;
 using DTO;
 
 namespace GUI.Controllers
@@ -26,8 +27,13 @@ namespace GUI.Controllers
         {
             return BL.ShoesBL.GetImageById(id);
         }
-
-        [Route("GetDetailsById/{id}")]
+		[Route("GetColors")]
+		[HttpGet]
+		public List<BL.ColorBL> GetColors()
+		{
+			return BL.ShoesBL.GetColors();
+		}
+		[Route("GetDetailsById/{id}")]
         [HttpGet]
         // GET: api/Shoes/5
         public shoeDetails GetDetailsById([FromUri] int id)
@@ -42,7 +48,7 @@ namespace GUI.Controllers
 		}
 		[Route("OnUpload")]
 		[HttpPost]
-		public bool onUpload([FromBody]ShoeDTO shoe)
+		public int onUpload([FromBody]ShoeDTO shoe)
 		{
 			return BL.ShoesBL.OnUpload(shoe);
 		}

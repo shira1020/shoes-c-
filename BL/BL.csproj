@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BranchBL.cs" />
+    <Compile Include="ColorBL.cs" />
     <Compile Include="converters\MoadonCustomerConverter.cs" />
     <Compile Include="converters\ShoeConverters.cs" />
     <Compile Include="EmployeeBL.cs" />
