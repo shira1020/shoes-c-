@@ -10,3 +10,9 @@ C:\repoes\shoes-c-\DTO\obj\Debug\DTO.csprojAssemblyReference.cache
 C:\repoes\shoes-c-\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
 C:\repoes\shoes-c-\DTO\obj\Debug\DTO.dll
 C:\repoes\shoes-c-\DTO\obj\Debug\DTO.pdb
+C:\c#git\shoes-c-\DTO\obj\Debug\DTO.csprojAssemblyReference.cache
+C:\c#git\shoes-c-\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+C:\c#git\shoes-c-\DTO\obj\Debug\DTO.dll
+C:\c#git\shoes-c-\DTO\obj\Debug\DTO.pdb
+C:\c#git\shoes-c-\DTO\bin\Debug\DTO.dll
+C:\c#git\shoes-c-\DTO\bin\Debug\DTO.pdb
