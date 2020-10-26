@@ -48,7 +48,7 @@ namespace GUI.Controllers
 		}
 		[Route("OnUpload")]
 		[HttpPost]
-		public int onUpload([FromBody]ShoeDTO shoe)
+		public int onUpload( [FromBody]addShoe shoe)
 		{
 			return BL.ShoesBL.OnUpload(shoe);
 		}

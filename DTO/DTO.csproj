@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="addShoe.cs" />
     <Compile Include="MoadonCustomerDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShoeDTO.cs" />

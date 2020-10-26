@@ -36,17 +36,29 @@ namespace BL
 			}
 		}
 
-		public static int OnUpload(ShoeDTO shoe)
+		public static int OnUpload(addShoe sh)
 		{
 			using (DB_shoesEntities5 db = new DB_shoesEntities5())
 			{
 				try
 				{
-					db.Shoes.Add(converters.ShoeConverter.ShoeToDAL(shoe));
-
+                   
+                    Sho s =converters.ShoeConverter.ShoeToDAL(sh.shoe);
+           
+                    int x;
+                    for (int i = 0; i < sh.colors.Length; i++)
+                    {
+                        x = sh.colors[i];
+                        Color c  = db.Colors.Where(c1 => c1.id_color == x).First();
+                        s.Colors.Add(c);
+                    }
+                    db.Shoes.Add(s);
+                   // s.Colors.Add(colors);
+					//db.Shoes.Add();
+                    
 					db.SaveChanges();
 
-					int id = db.Shoes.Select(s => s.id_shoe).Max();
+					int id = db.Shoes.Select(s1 => s1.id_shoe).Max();
 
 					return id;
 				}

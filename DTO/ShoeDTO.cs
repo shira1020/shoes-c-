@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
+
     public class ShoeDTO
     {
         public int id_shoe { get; set; }
@@ -16,4 +17,7 @@ namespace DTO
         public Nullable<int> from_size { get; set; }
         public Nullable<int> to_size { get; set; }
     }
+
+
+
 }
