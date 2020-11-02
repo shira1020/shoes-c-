@@ -9,7 +9,7 @@ namespace BL
 {
    public class BranchBL
     {
-
+        //function to get all the branches's name
         public static string[] GetAllBranches()
         {
             using (DB_shoesEntities5 db = new DB_shoesEntities5())
@@ -20,7 +20,8 @@ namespace BL
               return branches;
             }
         }
-
+       
+        //function to get a branches's id by name
         public static int GetIdBranchByName(string name)
         {
             using (DB_shoesEntities5 db = new DB_shoesEntities5())

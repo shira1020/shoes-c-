@@ -21,7 +21,6 @@ namespace BL
                         size = size,
                         color = color,
                         customer_name = name,
-                        //time_order =,
                         status = 0
                     }
                     );
@@ -70,8 +69,7 @@ namespace BL
         {
             using (DB_shoesEntities5 db = new DB_shoesEntities5())
             {
-                int cnt = db.OrdersFromStocks.Count(o => o.id_branch == id_branch && o.status == 0);
-                return cnt;
+                return db.OrdersFromStocks.Count(o => o.id_branch == id_branch && o.status == 0);
             }
         }
     }

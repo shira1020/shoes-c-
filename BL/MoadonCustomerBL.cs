@@ -12,56 +12,43 @@ namespace BL
 {
     public class MoadonCustomerBL
     {
-     
+
         public static bool AddMoadonCustomer(MoadonCustomerDTO customer)
         {
             using (DB_shoesEntities5 db = new DB_shoesEntities5())
             {
                 try
-                {
-
-                    db.MoadonCustomers.Add(
-                        converters.MoadonCustomerConverter.ConvertMoadonCustomerToDAL(customer)
-                     );
-
-
+               {  db.MoadonCustomers.Add(converters.MoadonCustomerConverter.ConvertMoadonCustomerToDAL(customer));
                     db.SaveChanges();
-                 //   sendSms();
-                  //  SendMail(customer.email);
+                    var fromAddress = new MailAddress("shoestime20@gmail.com", "Shoes-Time");
+                    var toAddress = new MailAddress(customer.email, "To Name");
+                    const string fromPassword = "s123s456";
+                    const string subject = "Welcome to Shoes Time";
+                    string body = $" Hi { customer.f_name} { customer.l_name} You have successfully joined our club card. \n " +
+                        $"We hope meet you again soon \n Thanks ";
+                    var smtp = new SmtpClient
+                    {
+                        Host = "smtp.gmail.com",
+                        Port = 587,
+                        EnableSsl = true,
+                        DeliveryMethod = SmtpDeliveryMethod.Network,
+                        UseDefaultCredentials = false,
+                        Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
+                    };
+                    using (var message = new MailMessage(fromAddress, toAddress)
+                    {
+                        Subject = subject,
+                        Body = body
+                    })
+                    {
+                        smtp.Send(message);
+                    }
                     return true;
                 }
                 catch (Exception e)
                 {
                     return false;
                 }
-
-            }
-
-        }
-        public static void SendMail(string email)
-        {
-            var fromAddress = new MailAddress("shoestime20@gmail.com", "Shoes-Time");
-            var toAddress = new MailAddress("1020shira@gmail.com", "To Name");
-            const string fromPassword = "s123s456";
-            const string subject = "Welcome to Shoes Time";
-            const string body = "hi Shira, its work!!!";
-
-            var smtp = new SmtpClient
-            {
-                Host = "smtp.gmail.com",
-                Port = 587,
-                EnableSsl = true,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                UseDefaultCredentials = false,
-                Credentials = new NetworkCredential(fromAddress.Address, fromPassword)
-            };
-            using (var message = new MailMessage(fromAddress, toAddress)
-            {
-                Subject = subject,
-                Body = body
-            })
-            {
-                smtp.Send(message);
             }
         }
     }

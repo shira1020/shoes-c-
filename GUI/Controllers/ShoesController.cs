@@ -31,7 +31,7 @@ namespace GUI.Controllers
 		[HttpGet]
 		public List<BL.ColorBL> GetColors()
 		{
-			return BL.ShoesBL.GetColors();
+			return BL.ColorBL.GetColors();
 		}
 		[Route("GetDetailsById/{id}")]
         [HttpGet]
@@ -50,14 +50,14 @@ namespace GUI.Controllers
 		[HttpPost]
 		public int onUpload( [FromBody]addShoe shoe)
 		{
-			return BL.ShoesBL.OnUpload(shoe);
+			return BL.ShoesBL.AddShoe(shoe);
 		}
 
 		[Route("GetColorsById/{id}")]
         [HttpGet]
         public string[] GetColorsById([FromUri] int id)
         { 
-            string[] arry =BL.ShoesBL.GetColorsById(id).ToArray();
+            string[] arry =BL.ColorBL.GetColorsById(id).ToArray();
             return arry;
         }
 
