@@ -29,6 +29,7 @@ namespace DAL
         public string street { get; set; }
         public Nullable<int> house_number { get; set; }
         public string name_branch { get; set; }
+        public string mapLink { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrdersFromBranch> OrdersFromBranches { get; set; }

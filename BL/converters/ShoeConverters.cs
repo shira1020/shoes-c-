@@ -27,7 +27,6 @@ namespace BL.converters
 		{ 
 				return new Sho
 			{
-				
 				id_shoe = shoe.id_shoe,
 				model = shoe.model,
 				picture = shoe.picture,

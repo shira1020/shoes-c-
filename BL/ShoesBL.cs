@@ -53,8 +53,33 @@ namespace BL
             }
         }
 
-        //get sizes of specific shoe by id
-        public static int[] GetSizesById(int id)
+        public static int[] GetSizes()
+        {
+            using (DB_shoesEntities5 db = new DB_shoesEntities5())
+            {
+                Sho sh = new Sho();
+                int fromsize = 34;
+                int tosize = 42;
+                int[] size = new int[tosize - fromsize + 1];
+                for (int i = 0; i < size.Length; i++)
+                {
+                    size[i] = fromsize++;
+                }
+                return size;
+            }
+        }
+
+        public static List<string> GetTypes()
+        {
+            using (DB_shoesEntities5 db = new DB_shoesEntities5())
+            {
+                List<string> types = new List<string>();
+                types = db.ShoeDescriptions.Select(s => s.name_description).ToList();
+                return types;
+            }
+        }
+            //get sizes of specific shoe by id
+            public static int[] GetSizesById(int id)
         {
             using (DB_shoesEntities5 db = new DB_shoesEntities5())
             {

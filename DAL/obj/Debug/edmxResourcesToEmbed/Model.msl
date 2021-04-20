@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Branches">
       <EntityTypeMapping TypeName="DB_shoesModel.Branch">
         <MappingFragment StoreEntitySet="Branches">
+          <ScalarProperty Name="mapLink" ColumnName="mapLink" />
           <ScalarProperty Name="name_branch" ColumnName="name_branch" />
           <ScalarProperty Name="id_branch" ColumnName="id_branch" />
           <ScalarProperty Name="manager_id" ColumnName="manager_id" />

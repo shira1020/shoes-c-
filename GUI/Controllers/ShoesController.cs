@@ -10,7 +10,7 @@ using DTO;
 
 namespace GUI.Controllers
 {
-    [System.Web.Http.Cors.EnableCors(origins:"*",headers:"*",methods:"*")]
+    [System.Web.Http.Cors.EnableCors(origins: "*", headers: "*", methods: "*")]
     [RoutePrefix("api/Shoes")]
     public class ShoesController : ApiController
     {
@@ -20,6 +20,8 @@ namespace GUI.Controllers
             return new string[] { "value1", "value2" };
         }
 
+
+
         [Route("GetImageById/{id}")]
         [HttpGet]
         // GET: api/Shoes/5
@@ -27,37 +29,50 @@ namespace GUI.Controllers
         {
             return BL.ShoesBL.GetImageById(id);
         }
+        [Route("GetSizes")]
+        [HttpGet]
+        public int[] GetSizes()
+        {
+            return BL.ShoesBL.GetSizes();
+        }
+        [Route("GetTypes")]
+        [HttpGet]
+        public List<string> GetTypes()
+        {
+return BL.ShoesBL.GetTypes();
+        }
 		[Route("GetColors")]
-		[HttpGet]
-		public List<BL.ColorBL> GetColors()
-		{
-			return BL.ColorBL.GetColors();
-		}
-		[Route("GetDetailsById/{id}")]
+        [HttpGet]
+        public List<BL.ColorBL> GetColors()
+        {
+           List<ColorBL>   a=  BL.ColorBL.GetColors();
+            return a;
+        }
+        [Route("GetDetailsById/{id}")]
         [HttpGet]
         // GET: api/Shoes/5
         public shoeDetails GetDetailsById([FromUri] int id)
         {
             return BL.ShoesBL.GetDetailsById(id);
         }
-		[Route("AddMoadonCustomer")]
-		[HttpPost]
-		public bool AddMoadonCustomer([FromBody] MoadonCustomerDTO cust)
-		{
-			return BL.MoadonCustomerBL.AddMoadonCustomer(cust);
-		}
-		[Route("OnUpload")]
-		[HttpPost]
-		public int onUpload( [FromBody]addShoe shoe)
-		{
-			return BL.ShoesBL.AddShoe(shoe);
-		}
+        [Route("AddMoadonCustomer")]
+        [HttpPost]
+        public bool AddMoadonCustomer([FromBody] MoadonCustomerDTO cust)
+        {
+            return BL.MoadonCustomerBL.AddMoadonCustomer(cust);
+        }
+        [Route("OnUpload")]
+        [HttpPost]
+        public int onUpload([FromBody]addShoe shoe)
+        {
+            return BL.ShoesBL.AddShoe(shoe);
+        }
 
-		[Route("GetColorsById/{id}")]
+        [Route("GetColorsById/{id}")]
         [HttpGet]
         public string[] GetColorsById([FromUri] int id)
-        { 
-            string[] arry =BL.ColorBL.GetColorsById(id).ToArray();
+        {
+            string[] arry = BL.ColorBL.GetColorsById(id).ToArray();
             return arry;
         }
 

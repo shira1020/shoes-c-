@@ -10,6 +10,7 @@
     <Property Name="street" Type="nchar" MaxLength="20" />
     <Property Name="house_number" Type="int" />
     <Property Name="name_branch" Type="nchar" MaxLength="20" />
+    <Property Name="mapLink" Type="nvarchar" MaxLength="1000" />
   </EntityType>
   <EntityType Name="Colors">
     <Key>

@@ -15,6 +15,7 @@
           <Property Name="street" Type="nchar" MaxLength="20" />
           <Property Name="house_number" Type="int" />
           <Property Name="name_branch" Type="nchar" MaxLength="20" />
+          <Property Name="mapLink" Type="nvarchar" MaxLength="1000" />
         </EntityType>
         <EntityType Name="Colors">
           <Key>
@@ -439,6 +440,7 @@
           <NavigationProperty Name="OrdersFromStocks" Relationship="Self.fk_branch" FromRole="Branches" ToRole="OrdersFromStock" />
           <NavigationProperty Name="Employee" Relationship="Self.fk_manager_branch" FromRole="Branches" ToRole="Employees" />
           <Property Name="name_branch" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="mapLink" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Color">
           <Key>
@@ -773,6 +775,7 @@
           <EntitySetMapping Name="Branches">
             <EntityTypeMapping TypeName="DB_shoesModel.Branch">
               <MappingFragment StoreEntitySet="Branches">
+                <ScalarProperty Name="mapLink" ColumnName="mapLink" />
                 <ScalarProperty Name="name_branch" ColumnName="name_branch" />
                 <ScalarProperty Name="id_branch" ColumnName="id_branch" />
                 <ScalarProperty Name="manager_id" ColumnName="manager_id" />

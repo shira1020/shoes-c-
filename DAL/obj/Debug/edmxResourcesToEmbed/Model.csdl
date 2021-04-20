@@ -15,6 +15,7 @@
     <NavigationProperty Name="OrdersFromStocks" Relationship="Self.fk_branch" FromRole="Branches" ToRole="OrdersFromStock" />
     <NavigationProperty Name="Employee" Relationship="Self.fk_manager_branch" FromRole="Branches" ToRole="Employees" />
     <Property Name="name_branch" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="mapLink" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Color">
     <Key>

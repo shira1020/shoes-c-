@@ -42,9 +42,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="addShoe.cs" />
+    <Compile Include="branchDetails.cs" />
     <Compile Include="MoadonCustomerDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShoeDTO.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{3B22D029-95E1-49BD-8766-2E2F8F1255F1}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
