@@ -26,14 +26,16 @@ namespace BL
                     );
                 Stock stock = db.Stocks.First(s => s.id_branch == id_branch && s.id_shoe == id_shoe
                  && s.size == size && s.color == color);
-                stock.available_amount--;
+                
                 try
                 {
+                    stock.available_amount--;
                     db.SaveChanges();
                     return stock.id_stock;
                 }
                 catch (Exception e)
                 {
+                    stock.available_amount++;
                     return 0;
                 }
 

@@ -1,10 +1,6 @@
 ﻿using DAL;
 using DTO;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Net;
 using System.Net.Mail;
 
@@ -18,9 +14,15 @@ namespace BL
             using (DB_shoesEntities5 db = new DB_shoesEntities5())
             {
                 try
-               {  db.MoadonCustomers.Add(converters.MoadonCustomerConverter.ConvertMoadonCustomerToDAL(customer));
-                    db.SaveChanges();
-                    var fromAddress = new MailAddress("shoestime20@gmail.com", "Shoes-Time");
+               {
+
+                    MoadonCustomer m = converters.MoadonCustomerConverter.ConvertMoadonCustomerToDAL(customer);
+                    // db.MoadonCustomers.Add(m);
+                    // db.SaveChanges();
+
+
+
+                    var fromAddress = new MailAddress("shoestime20@gmail.com" , "Shoes-Time");
                     var toAddress = new MailAddress(customer.email, "To Name");
                     const string fromPassword = "s123s456";
                     const string subject = "Welcome to Shoes Time";
@@ -40,9 +42,11 @@ namespace BL
                         Subject = subject,
                         Body = body
                     })
-                    {
-                        smtp.Send(message);
-                    }
+     
+                   smtp.Send(message);
+
+                       
+                    
                     return true;
                 }
                 catch (Exception e)

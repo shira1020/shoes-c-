@@ -133,7 +133,7 @@ namespace BL
                     {
                         shoe.salePrice = shoe.price;
                         shoe.saleName = "no sale now";
-                    }
+                    } 
 
                     return shoe;
                 }
@@ -145,7 +145,7 @@ namespace BL
         }
 
         //get shoes that meets constraints by the parameters
-        public static ShoeDTO[] GetShoesByCategory(int size, string color, int kind, string desc)
+        public static ShoeDTO[] GetShoesByCategory(int size, int color, int kind, string desc, int max_price)
         {
             using (DB_shoesEntities5 db = new DB_shoesEntities5())
             {
@@ -153,10 +153,10 @@ namespace BL
                 List<Sho> FinalList = new List<Sho>();
 
                 list = db.Shoes.Where(s => s.from_size <= size && s.to_size >= size
-                && s.kind == kind).ToList();
+                && s.kind == kind && s.price <= max_price).ToList();
                 foreach (var shoe in list)
                 {
-                    if (shoe.Colors.Any(s => s.color1 == color) &&
+                    if (shoe.Colors.Any(s => s.id_color == color) &&
                         shoe.ShoeDescriptions.Any(s => s.name_description == desc))
                         FinalList.Add(shoe);
                 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using DTO;
 
 namespace GUI.Controllers
 {
@@ -24,12 +25,12 @@ namespace GUI.Controllers
         }
 
 
-        //[Route("GetBranchesByShoe/{id_shoe}/{size}/{color}")]
-        //[HttpGet]
-        // public List<string>[] GetBranchesByShoe([FromUri] int id_shoe, int size, string color)
-        // {
-        //    return BL.StockBL.GetBranchesByShoe2(id_shoe, size, color);
-        // }
+        [Route("GetBranchesByShoe/{id_shoe}/{size}/{color}")]
+        [HttpGet]
+        public branchDetails[] GetBranchesByShoe([FromUri] int id_shoe, int size, string color)
+        {
+            return BL.StockBL.GetBranchesByShoe(id_shoe, size, color);
+        }
 
 
         [Route("IsFoundInStock/{id_shoe}/{id_branch}/{size}/{color}")]

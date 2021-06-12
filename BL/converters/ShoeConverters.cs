@@ -14,7 +14,7 @@ namespace BL.converters
 		{
 			return new ShoeDTO
 			{
-				//id_shoe = shoe.id_shoe,
+				id_shoe = shoe.id_shoe,
 				model = shoe.model,
 				picture = shoe.picture,
 				kind = shoe.kind,

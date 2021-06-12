@@ -20,7 +20,12 @@ namespace GUI.Controllers
             return new string[] { "value1", "value2" };
         }
 
-
+        [Route("GetShoesByCategory/{size}/{color}/{kind}/{type}/{price}")]
+        [HttpGet]
+        public ShoeDTO[] GetShoesByCategory([FromUri] int size, int color, int kind, string type, int price)
+        {
+            return BL.ShoesBL.GetShoesByCategory(size, color, kind, type, price);
+        }
 
         [Route("GetImageById/{id}")]
         [HttpGet]
@@ -39,15 +44,16 @@ namespace GUI.Controllers
         [HttpGet]
         public List<string> GetTypes()
         {
-return BL.ShoesBL.GetTypes();
+            return BL.ShoesBL.GetTypes();
         }
 		[Route("GetColors")]
         [HttpGet]
-        public List<BL.ColorBL> GetColors()
+        public List<ColorBL> GetColors()
         {
-           List<ColorBL>   a=  BL.ColorBL.GetColors();
-            return a;
+           return BL.ColorBL.GetColors();
+            
         }
+ 
         [Route("GetDetailsById/{id}")]
         [HttpGet]
         // GET: api/Shoes/5

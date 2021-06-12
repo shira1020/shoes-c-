@@ -21,9 +21,10 @@ namespace BL
                         return db.Branches.First(b => b.manager_id == id).id_branch;
                     }
                     else
-                        return 2;
+                        return 0;
+               
                 }
-                return 0;
+                return -1;
             }
         }
 
