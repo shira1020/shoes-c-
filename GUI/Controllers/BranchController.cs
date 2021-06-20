@@ -37,6 +37,15 @@ namespace GUI.Controllers
         {
             return BL.BranchBL.GetIdBranchByName(name);
         }
+
+        [Route("GetBranchNameById/{id}")]
+        [HttpGet]
+        public string GetBranchNameById([FromUri] int id)
+        {
+            return BL.BranchBL.GetBranchNameById(id);
+        }
+
+
         //[Route("MyBranch/{password}")]
         //[HttpGet]
         //public int MyBranch([FromUri] string password)

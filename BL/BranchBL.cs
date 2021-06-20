@@ -30,6 +30,15 @@ namespace BL
                 return db.Branches.First(b=>b.name_branch==name).id_branch;
             }
         }
+   
+        public static string GetBranchNameById(int id)
+        {
+            using (DB_shoesEntities5 db = new DB_shoesEntities5())
+            {
+                string x=    db.Branches.First(b => b.id_branch == id).name_branch;
+                return x;
+            }
+        }
         public static List<branchDetails> GetBranchByShoe(int idshoe, int size, string color)
         {
             using (DB_shoesEntities5 db = new DB_shoesEntities5())
