@@ -35,7 +35,7 @@ namespace BL
         {
             using (DB_shoesEntities5 db = new DB_shoesEntities5())
             {
-                string x=    db.Branches.First(b => b.id_branch == id).name_branch;
+                string x=db.Branches.First(b => b.id_branch == id).name_branch;
                 return x;
             }
         }
