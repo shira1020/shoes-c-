@@ -25,11 +25,17 @@ namespace GUI.Controllers
 
         [Route("IsEmployee/{id_emp}/{pass}")]
         [HttpGet]
-        public int IsEmployee( [FromUri] string id_emp, string pass)
+        public int IsEmployee([FromUri] string id_emp, string pass)
         {
             return BL.EmployeeBL.IsEmployee(id_emp, pass);
         }
 
+        [Route("GetEmployeeNameById/{id_emp}")]
+        [HttpGet]
+        public string GetEmployeeNameById([FromUri] string id_emp)
+        {
+            return BL.EmployeeBL.GetEmployeeNameById(id_emp);
+        }
 
         //[Route("IsWorker/{password}")]
         //[HttpGet]

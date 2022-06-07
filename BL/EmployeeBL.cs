@@ -28,6 +28,22 @@ namespace BL
             }
         }
 
+        public static string GetEmployeeNameById(string id_emp)
+        {
+            using (DB_shoesEntities5 db = new DB_shoesEntities5())
+            {
+                if (db.Employees.Any(e =>  e.id_employee == id_emp))
+                {
+    
+                   return db.Employees.First(e => e.id_employee == id_emp).f_name + " " + 
+                         db.Employees.First(e => e.id_employee == id_emp).l_name;
+
+                }
+                return "error";
+            }
+        }
+        
+
         //public static int MyBranch(string pass)
         //{
         //    using (DB_shoesEntities5 db = new DB_shoesEntities5())
